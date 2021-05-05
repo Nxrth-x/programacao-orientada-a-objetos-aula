@@ -2,20 +2,44 @@
 
 iFood 🍇
 
+<!--
+HELPERS
+
+Pular linha
+<br />
+
+Linha horizontal
+
+<hr />
+
+Link
+[Google](https://google.com)
+
+Imagem
+![image](https://arquivo.devmedia.com.br/artigos/Thiago_Varallo/Introducao_POO_Java/Introducao_POO_Java2.jpg)
+-->
+
 ## Tópicos
 
 - [ ] Introdução a programação orientada a objetos - **Eder**
 - Classe - **Nina**
 
-  - [ ] Objetos - **Nina**
-  - [ ] Atributos - **Nina**
-  - [ ] Métodos
+  - [x] Objetos - **Nina**
+  - [x] Atributos - **Nina**
+  - [ ] Métodos - **Nina**
 
 - Orientação a objetos
-  - [ ] Abstração - **Eder**
+  - [x] Abstração - **Eder**
   - [ ] Encapsulamento
   - [ ] Herança
   - [ ] Polimorfismo
+
+<!--
+
+Extensão: Markdown preview
+Ctrl + K, V
+
+ -->
 
 ## Introdução a programação orientada a objetos
 
@@ -36,36 +60,20 @@ Esses são conceitos importantes para facilitar a compreensão de uma base de c�
 
 ## Classe
 
-Uma classe é uma espécie de molde
-para a criação de objetos. Nela, é permitido armazenar propriedades (atributos/características) e métodos (função).
+Uma classe é uma espécie de molde para a criação de objetos. Nela, é permitido armazenar propriedades (atributos/características) e métodos (função).
 
-- Características das classes
+### Características das classes
+
 Toda classe possui um nome;
 Possuem visibilidade, exemplo: public, private, protected;
-Para criar uma classe basta _declarar a visibilidade + digitar a palavra reservada class + NomeDaClasse + abrir e fechar chaves { }._
+Para criar uma classe basta declarar a visibilidade + digitar a palavra reservada class + NomeDaClasse + abrir e fechar chaves { }.
 
-  <br>
-  
-  ```java
-   public class Teste{
+```java
+public class Teste{
   //ATRIBUTOS OU PROPRIEDADES
   //MÉTODOS
-  }
-  ```
-<!--
-Pular linha
-<br />
-
-Linha horizontal
-
-<hr />
-
-Link
-[Google](https://google.com)
-
-Imagem
-![image](https://arquivo.devmedia.com.br/artigos/Thiago_Varallo/Introducao_POO_Java/Introducao_POO_Java2.jpg)
--->
+}
+```
 
 Na imagem abaixo, temos uma representação de classe, contendo as características/atributos dos cachorros: orelhas grandes ou pequenas, por exemplo; e métodos/funções: andar, falar, comer.
 
@@ -113,6 +121,10 @@ public class TestaCaes {
 	}
 }
 ```
+
+### Métodos
+
+<!-- https://stackedit.io/ -->
 
 ### Abstração
 
@@ -172,5 +184,3 @@ public class Pessoa {
 ```
 
 Nesse exemplo, tudo o que um usuário que irá utilizar a classe precisa saber é como instanciar um objeto do tipo `Pessoa`. Contrário ao outro exemplo, ele não precisa saber os detalhes de implementação de um objeto desse tipo, caso precise que uma pessoa diga olá o método `.dizerOla()` poderá ser chamado.
-
-## Olá, mundo!
