@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .red {
+        filter: hue-rotate(0deg);
+      }
+
+      .green {
+        filter: hue-rotate(90deg);
+      }
+
+      .blue {
+        filter: hue-rotate(180deg);
+      }
+
+      button {
+        padding: 0.25rem 1rem;
+        border: 1px solid #ddd;
+        color: #555;
+        background: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <img :src="currentImage" :class="color" />
+      <div>
+        <h1>Atributos</h1>
+        <button v-on:click="setColor('red')">Vermelho</button>
+        <button v-on:click="setColor('green')">Verde</button>
+        <button v-on:click="setColor('blue')">Azul</button>
+      </div>
+      <div>
+        <h1>Métodos</h1>
+        <button v-on:click="walk()">{{ isRunning ? "Parar" : "Andar" }}</button>
+        <button>Falar</button>
+      </div>
+    </div>
+  </body>
+
+  <!-- VUE -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: () => ({
+        currentColor: "red",
+        currentImage: "./assets/normal.png",
+        isRunning: false,
+        interval: null,
+        color: "red",
+      }),
+      methods: {
+        setColor(color) {
+          this.color = color;
+        },
+
+        walk() {
+          if (this.isRunning) {
+            this.isRunning = false;
+            clearInterval(this.interval);
+            this.interval = null;
+            this.currentImage = "./assets/normal.png";
+            return;
+          }
+
+          this.isRunning = true;
+          this.interval = setInterval(() => {
+            this.currentImage =
+              this.currentImage === "./assets/normal.png"
+                ? "./assets/walking.png"
+                : "./assets/normal.png";
+          }, 250);
+        },
+      },
+    });
+  </script>
+</html>

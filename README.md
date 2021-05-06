@@ -26,18 +26,19 @@ Imagem
 
   - [x] Objetos - **Nina**
   - [x] Atributos - **Nina**
-  - [ ] Métodos - **Nina**
+  - [x] Métodos - **Nina**
 
 - Orientação a objetos
   - [x] Abstração - **Eder**
-  - [ ] Encapsulamento
+  - [x] Encapsulamento
   - [ ] Herança
-  - [ ] Polimorfismo
+  - [ ] Polimorfismo **Nina**
 
 <!--
 
 Extensão: Markdown preview
-Ctrl + K, V
+
+Abrir o arquivo bunitin: Ctrl + K, V
 
  -->
 
@@ -124,6 +125,27 @@ public class TestaCaes {
 
 ### Métodos
 
+Os métodos possibilitam a comunicação com outros objetos. São ações e, por isso, devem ter verbos como nomes.
+
+Veja no exemplo abaixo a criação do método `latir` dentro da classe `Cachorro`
+
+```java
+  class Cachorro{
+	int tamanho;
+	String nome;
+
+
+	void latir(){
+		if(tamanho > 60)
+			System.out.println("Wooof, Wooof!");
+		else if(tamanho > 14)
+			System.out.println("Ruff!, Ruff!");
+		else
+			System.out.println("Yip!, Yip!");
+	}
+}
+```
+
 <!-- https://stackedit.io/ -->
 
 ### Abstração
@@ -184,3 +206,127 @@ public class Pessoa {
 ```
 
 Nesse exemplo, tudo o que um usuário que irá utilizar a classe precisa saber é como instanciar um objeto do tipo `Pessoa`. Contrário ao outro exemplo, ele não precisa saber os detalhes de implementação de um objeto desse tipo, caso precise que uma pessoa diga olá o método `.dizerOla()` poderá ser chamado.
+
+### Polimorfismo
+
+Polimorfismo denota uma situação na qual um objeto pode se comportar de maneiras diferentes ao receber uma mensagem.
+Veja o exemplo abaixo. Nele, o método `falar` é sobre escrito na classe filha `Gato` e na classe filha `Leão`. Mesmo que `Gato` e `Leão` tenham a mesma classe mãe, suas ações são diferentes, porque suas implementações são diferentes.
+importância: redução de código, simplicidade, flexibilidade,
+
+```java
+abstract class Felino {
+  public void falar();
+}
+
+public class Gato extends Felino {
+  @Override
+  public void falar() {
+    System.out.println("Miau!");
+  }
+}
+
+public class Leao extends Felino {
+  @Override
+  public void falar() {
+    System.out.println("Rawrrrrr!");
+  }
+}
+```
+
+Exemplo:
+Existem diferentes tipos de livros: ebooks e físicos. Podemos criar uma classe `Livro` e a utilizarmos quando nos referirmos a ebooks e livros físicos também. Veja:
+
+```java
+public class App {
+  public static void main(String[] args) {
+    LivroFisico livroFisico = new LivroFisico("Alice no país das maravilhas", "Lewis Carroll");
+    Ebook ebook = new Ebook("Alice no país das maravilhas", "Lewis Carroll");
+
+    CarrinhoDeCompras.adicionaLivro(livroFisico);
+    CarrinhoDeCompras.adicionaLivro(ebook);
+  }
+}
+
+public class Felino {
+  int patas = 4;
+  boolean possui_pelo = true;
+}
+
+
+public class Leao extends Felino {
+  public void rugir() {
+    System.out.print("Rawnnnnnnnn!");
+  }
+}
+
+
+public class Pessoa {
+  String nome;
+  int idade;
+
+  // Instanciação de objeto
+  // Pessoa pessoa = new Pessoa("Nina", 23);
+
+
+  //Criando um construtor
+  public Pessoa(String nome, int idade){
+    this.nome = nome;
+    this.idade = idade;
+  }
+
+
+  public String dizer_ola() {
+    // "nome" diz: Olá!
+    // System.
+    String resposta = String.format(nome + " diz: Olá!");
+    return resposta;
+  }
+
+ public int Somar(int n1, int n2) {
+    int soma = n1 + n2;
+    return soma;
+
+    int, float, boolean, char
+ }
+
+ public float Dividir(int n1, int n2) {
+   float divisao = n1 / n2;
+   return divisao;
+ }
+
+}
+```
+
+O polimorfismo permite que classes abstratas consigam receber comportamentos através de classes concretas. Por exemplo, um dispositivo USB é classe abstrata e os dispositivos (Pen Drive, Ipad, Câmeras, etc) são as classes concretas. Ou seja, o USB é uma especificação que po
+
+<!--
+
+    Autor autor = new Autor();
+    autor.setNome("Nathan C.");
+
+    LivroFisico fisico = new LivroFisico(autor);
+    fisico.setNome("Java Programming");
+    fisico.setValor(180);
+
+    Ebook ebook = new Ebook(autor);
+    ebook.setNome("C# Programming");
+    ebook.setValor(120);
+
+    CarrinhoCompras carrinho = new CarrinhoCompras();
+    carrinho.adicionalLivro(fisico);
+    carrinho.adicionalLivro(ebook);
+
+    System.out.println("Total: " + carrinho.getTotal());
+
+ -->
+
+# Ifood
+
+`Vendedor`
+`Consumidor`
+`CarrinhoDeCompras`
+
+`Produto`
+
+`ProdutoAlimenticio`
+`ProdutoUtilitário `
