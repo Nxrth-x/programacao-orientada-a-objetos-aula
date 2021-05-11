@@ -258,6 +258,47 @@ public class Usuario {
 
 Com isso conseguimos estabelecer regras de negócio para o nosso sistema de maneira que somente os detalhes fundamentais sejam visíveis para as outras classes.
 
+### Herança
+
+Herança é um conceito da orientação a objetos que tem como principal intuíto a reusabilidade de código. A herança permite que classes possam herdar comportamentos e qualidades de uma classe base, extendendo assim suas funcionalidade e garantindo assim uma reusabilidade maior de código.
+
+No exemplo a seguir exemplificaremos a partir de uma classe `Humano`.
+
+```java
+public class Humano {
+  public String nome;
+  public int idade;
+  public char sexo;
+
+  public Humano(String nome, int idade, char sexo) {
+    this.nome = nome;
+    this.idade = idade;
+    this.sexo = sexo;
+  }
+}
+
+public class Bebe extends Humano {
+  public void chorar() {
+    System.out.println("Buááááá!");
+  }
+}
+
+public class Adulto extends Humano {
+  private String cpf;
+
+  public Adulto(String nome, int idade, char sexo, String cpf) {
+    super(nome, idade, sexo);
+    this.cpf = cpf;
+  }
+
+  public void pagarBoleto() {
+    System.out.println("Num guento mais pagar boleto. ;-;");
+  }
+}
+```
+
+Nesse exemplo temos duas subclasses de humano, `Bebê` e `Adulto`, onde as duas estendem os atributos de `Humano`, porém possuem diferentes `atributos` e `métodos`.
+
 ### Polimorfismo
 
 Polimorfismo denota uma situação na qual um objeto pode se comportar de maneiras diferentes ao receber uma mensagem.
