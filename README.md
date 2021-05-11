@@ -1,4 +1,3 @@
-# Trabalho de LPOO - Orientação a objetos
 
 iFood 🍇
 
@@ -44,24 +43,29 @@ Abrir o arquivo bunitin: Ctrl + K, V
 
 ## Introdução a programação orientada a objetos
 
-A programação orientada a objetos é um dos principais paradigmas de programação, usado e testado extensivamente em casos reais onde um dos requisitos do projeto é escalabilidade para equipes. A orientação a objetos nos traz um nível de abstração e agilidade essêncial para o desenvolvimento de grandes projetos.
+A programação orientada a objetos, também conhecida como POO, é um dos principais paradigmas de programação, usado e testado extensivamente em casos reais onde um dos requisitos do projeto é escalabilidade para equipes. A orientação a objetos nos traz um nível de abstração e agilidade essencial para o desenvolvimento de grandes projetos.
 
-A programação orientada a objetos possui quatro conceitos essenciais para sua compreensão, sendo eles:
+A POO possui quatro conceitos essenciais para facilitar a compreensão de uma base de código, sendo eles:
 
 - Abstração
 - Encapsulamento
 - Herança
 - Polimorfismo
 
-Esses são conceitos importantes para facilitar a compreensão de uma base de código;
 
-<!-- Continuar isso daqui quando tiver mais ideia -->
+Além disso, existem muitos prós ao programar usando a LPOO:
+  - Torna os programas mais gerenciáveis (manutenções e modificações, por exemplo)
+  - Escalabilidade do programa
+  - Por trabalhar com objetos, permite que você represente melhor o mundo real
+  - Os programas em POO são mais fáceis de ler e entender
+  - Facilita a reutilização de objetos, aumentando a velocidade de programação
+  - Mais fácil depurar, porque os objetos são autônomos
 
-> Enchendo linguiça... 🐷
+
 
 ## Classe
 
-Uma classe é uma espécie de molde para a criação de objetos. Nela, é permitido armazenar propriedades (atributos/características) e métodos (função).
+Uma classe é uma espécie de molde para a criação de objetos. Nela, é permitido armazenar propriedades (atributos/características) e métodos (funções). Usamos classes para representar objetos do mundo real no código.
 
 ### Características das classes
 
@@ -84,7 +88,7 @@ Na imagem abaixo, temos uma representação de classe, contendo as característi
 
 Os objetos são características definidas pelas classes. Neles é permitido instanciar objetos da classe para inicializar os atributos e invocar os métodos.
 
-A figura abaixo mostra que todo objeto é algo que existe, uma coisa concreta, já a classe é considerada como um modelo ou projeto de um objeto, sendo algo que não consegue tocar.
+A figura abaixo mostra que todo objeto é algo que existe, uma coisa concreta. Já a classe é considerada como um modelo ou projeto de um objeto, sendo algo que não consegue tocar.
 
 ![image](https://arquivo.devmedia.com.br/artigos/Thiago_Varallo/Introducao_POO_Java/Introducao_POO_Java3.jpg)
 
@@ -128,6 +132,8 @@ public class TestaCaes {
 Os métodos possibilitam a comunicação com outros objetos. São ações e, por isso, devem ter verbos como nomes.
 
 Veja no exemplo abaixo a criação do método `latir` dentro da classe `Cachorro`
+
+Explicando o exemplo: aqui criamos a classe `Cachorro` e demos dois atributos a ela (tamanho e nome). Logo depois, criamos o método `latir`, que terá diferentes latidos, dependendo do tamanho do cachorro.
 
 ```java
   class Cachorro{
@@ -211,7 +217,7 @@ Nesse exemplo, tudo o que um usuário que irá utilizar a classe precisa saber �
 
 Polimorfismo denota uma situação na qual um objeto pode se comportar de maneiras diferentes ao receber uma mensagem.
 Veja o exemplo abaixo. Nele, o método `falar` é sobre escrito na classe filha `Gato` e na classe filha `Leão`. Mesmo que `Gato` e `Leão` tenham a mesma classe mãe, suas ações são diferentes, porque suas implementações são diferentes.
-importância: redução de código, simplicidade, flexibilidade,
+Importância: redução de código, simplicidade, flexibilidade.
 
 ```java
 abstract class Felino {
@@ -247,17 +253,7 @@ public class App {
   }
 }
 
-public class Felino {
-  int patas = 4;
-  boolean possui_pelo = true;
-}
 
-
-public class Leao extends Felino {
-  public void rugir() {
-    System.out.print("Rawnnnnnnnn!");
-  }
-}
 
 
 public class Pessoa {
@@ -297,7 +293,7 @@ public class Pessoa {
 }
 ```
 
-O polimorfismo permite que classes abstratas consigam receber comportamentos através de classes concretas. Por exemplo, um dispositivo USB é classe abstrata e os dispositivos (Pen Drive, Ipad, Câmeras, etc) são as classes concretas. Ou seja, o USB é uma especificação que po
+O polimorfismo permite que classes abstratas consigam receber comportamentos através de classes concretas.
 
 <!--
 
