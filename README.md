@@ -19,7 +19,7 @@ Imagem
 
 ## Tópicos
 
-- [ ] Introdução a programação orientada a objetos - **Eder**
+- [x] Introdução a programação orientada a objetos - **Eder**
 - Classe - **Nina**
 
   - [x] Objetos - **Nina**
@@ -28,17 +28,9 @@ Imagem
 
 - Orientação a objetos
   - [x] Abstração - **Eder**
-  - [x] Encapsulamento
+  - [x] Encapsulamento - **Eder**
   - [ ] Herança
-  - [ ] Polimorfismo **Nina**
-
-<!--
-
-Extensão: Markdown preview
-
-Abrir o arquivo bunitin: Ctrl + K, V
-
- -->
+  - [x] Polimorfismo **Nina**
 
 ## Introdução a programação orientada a objetos
 
@@ -95,10 +87,10 @@ Os atributos são as propriedades de um objeto. Veja no exemplo abaixo a defini�
 
 ```java
 public class Cachorro {
-	public String nome;
-	public int peso;
-	public String corOlhos;
-	public int quantPatas;
+  public String nome;
+  public int peso;
+  public String corOlhos;
+  public int quantPatas;
 }
 ```
 
@@ -107,19 +99,17 @@ Na imagem abaixo, criamos alguns objetos do tipo `Cachorro` e designamos a eles 
 ```java
 public class TestaCaes {
   public static void main(String[] args) {
-    Cachorro cachorro1 = new Cachorro("Bob", 12);
+    Cachorro rex = new Cachorro();
+    rex.nome = "Rex";
+    rex.corOlhos = "amarelo";
+    rex.peso = 22;
+    rex.quantPatas = 3;
 
-    Cachorro cachorro2 = new Cachorro();
-    cachorro2.nome = "Rex";
-    cachorro2.corOlhos = "amarelo";
-    cachorro2.peso = 22;
-    cachorro2.quantPatas = 3;
-
-    Cachorro cachorro3 = new Cachorro();
-    cachorro3.nome = "Bob";
-    cachorro3.corOlhos = "marrom";
-    cachorro3.peso = 13;
-    cachorro3.quantPatas = 4;
+    Cachorro bob = new Cachorro();
+    bob.nome = "Bob";
+    bob.corOlhos = "marrom";
+    bob.peso = 13;
+    bob.quantPatas = 4;
   }
 }
 ```
@@ -133,19 +123,25 @@ Veja no exemplo abaixo a criação do método `latir` dentro da classe `Cachorro
 Explicando o exemplo: aqui criamos a classe `Cachorro` e demos dois atributos a ela (tamanho e nome). Logo depois, criamos o método `latir`, que terá diferentes latidos, dependendo do tamanho do cachorro.
 
 ```java
-  class Cachorro{
-	int tamanho;
-	String nome;
+class Cachorro{
+  String nome;
+  int tamanho;
 
+  public Cachorro(String nome, int tamanho) {
+    this.nome = nome;
+    this.tamanho = tamanho;
+  }
 
-	void latir(){
-		if(tamanho > 60)
-			System.out.println("Wooof, Wooof!");
-		else if(tamanho > 14)
-			System.out.println("Ruff!, Ruff!");
-		else
-			System.out.println("Yip!, Yip!");
-	}
+  void latir() {
+    if(tamanho > 60)
+      System.out.println("Wooof, Wooof!");
+
+    else if(tamanho > 14)
+      System.out.println("Ruff!, Ruff!");
+
+    else
+      System.out.println("Yip!, Yip!");
+  }
 }
 ```
 
@@ -178,8 +174,6 @@ Neste exemplo reparamos alguns problemas do paradigma estrutural: Os detalhes de
 
 #### Exemplo 2 - Paradigma orientado a objetos
 
-<!-- Exemplo programação orientada a objetos -->
-
 Nesse segundo exemplos temos o código representado em orientação a objetos, onde um objeto do tipo pessoa possui os atributos `nome`, `idade` e também possui o método `dizerOla`.
 
 ```java
@@ -210,13 +204,86 @@ public class Pessoa {
 
 Nesse exemplo, tudo o que um usuário que irá utilizar a classe precisa saber é como instanciar um objeto do tipo `Pessoa`. Contrário ao outro exemplo, ele não precisa saber os detalhes de implementação de um objeto desse tipo, caso precise que uma pessoa diga olá o método `.dizerOla()` poderá ser chamado.
 
+### Encapsulamento
+
+Encapsulamento (também conhecido como visibilidade), é um conceito da programação orientada a objetos que nos permite esconder detalhes de implementação de uma classe. Utilizamos o encapsulamento para expor somente as características fudamentais para o funcionamento da classe, bem como também fortalecer a regra de negócio em determinadas ocasiões.
+
+#### Exemplo
+
+Você possui um usuário em seu sistema, ele possui `nome`, `e-mail` e `senha` como atributos. A senha deverá ser oculta das outras classes da sua aplicação, para evitar problemas de segurança. No seu sistema também, quando o `e-mail` do usuário é alterado, também lhe é mandado uma mensagem no novo e-mail informando a alteração. Como fazemos isso?
+
+```java
+public class Usuario {
+  public String nome;
+  // E-mail e senha são atributos privados
+  private String email;
+  private String senha;
+
+  public Usuario(String nome, String email, String senha) {
+    this.nome = nome;
+    this.email = email;
+    this.senha = senha;
+  }
+
+  public String getEmail() {
+    return this.email;
+  }
+
+  public boolean setEmail(String novoEmail) {
+    this.email = novoEmail;
+
+    // Envia uma mensagem para o usuário
+    // no novo e-mail informando a troca
+    ServicoDeEmail.enviarEmail(novoEmail);
+
+    return true;
+  }
+
+  public boolean setSenha(String novaSenha) {
+    // Se o tamanho da senha for maior
+    // ou igual a 8, alterar e retornar
+    // Verdadeiro
+    if(novaSenha.size() >= 8) {
+      this.senha = novaSenha;
+      return true;
+    }
+
+    // Retornar falso caso a senha
+    // não seja válida
+    return false;
+
+  }
+}
+```
+
+Com isso conseguimos estabelecer regras de negócio para o nosso sistema de maneira que somente os detalhes fundamentais sejam visíveis para as outras classes.
+
 ### Polimorfismo
 
 Polimorfismo denota uma situação na qual um objeto pode se comportar de maneiras diferentes ao receber uma mensagem.
+
+> Importância: redução de código, simplicidade, flexibilidade.
+
 Veja o exemplo abaixo. Nele, o método `falar` é sobre escrito na classe filha `Gato` e na classe filha `Leão`. Mesmo que `Gato` e `Leão` tenham a mesma classe mãe, suas ações são diferentes, porque suas implementações são diferentes.
-Importância: redução de código, simplicidade, flexibilidade.
 
 ```java
+public class App {
+  public static void main() {
+    var gato = new Gato();
+    var leao = new Leao();
+
+    apresentarFelino("Gato", gato);
+    apresentarFelino("Leão", leao);
+  }
+
+  // Aplicação do polimorfismo
+  public static void apresentarFelino(String tipo, Felino felino) {
+    System.out.printf("O %d diz:", tipo);
+    Felino.falar();
+  }
+}
+
+
 abstract class Felino {
   public void falar();
 }
@@ -236,113 +303,4 @@ public class Leao extends Felino {
 }
 ```
 
-Exemplo:
-Existem diferentes tipos de livros: ebooks e físicos. Podemos criar uma classe `Livro` e a utilizarmos quando nos referirmos a ebooks e livros físicos também. Veja:
-
-```java
-public class App {
-  public static void main(String[] args) {
-    LivroFisico livroFisico = new LivroFisico("Alice no país das maravilhas", "Lewis Carroll");
-    Ebook ebook = new Ebook("Alice no país das maravilhas", "Lewis Carroll");
-
-    CarrinhoDeCompras.adicionaLivro(livroFisico);
-    CarrinhoDeCompras.adicionaLivro(ebook);
-  }
-}
-
-// TODO
-// 1 - Livro
-
-// 2 - Carrinho de compras
-
-Livro.adicionar(carrinhoDeCompras);
-
-public class CarrinhoDeCompras {
-  private ArrayList<Livro> livros;
-
-  public CarrinhoDeCompras() {
-  }
-
-  public void adicionarLivro(Livro livro) {
-    this.livros.add(livro);
-  }
-}
-
-public abstract class Livro {
-  private String nome;
-  private String autor;
-  private boolean preco;
-  private boolean isbn;
-
-  public Livro(String nome, String autor, double preco, int isbn) {
-    this.isbn = isbn;
-    this.nome = nome;
-    this.autor = autor;
-    this.preco = preco;
-  }
-
-  public boolean adicionar(CarrinhoDeCompras carrinhoDeCompras);
-}
-
-public class LivroFisico extends Livro {
-  private String materialDaCapa;
-
-  public LivroFisico (String nome, String autor, double preco, int isbn, String materialDaCapa) {
-    super(nome, autor, preco, isbn);
-    this.materialDaCapa = materialDaCapa;
-  }
-
-  public boolean adicionar(CarrinhoDeCompras carrinhoDeCompras) {
-    carrinhoDeCompras.adicionarLivro(this);
-  }
-}
-
-// Livro digital com desconto de 20%
-
-public class LivroDigital extends Livro {
-  private boolean redimensionavel;
-
-  public void main(String[] args) {
-    var HarryPotter = new LivroDigital(...);
-
-    HarryPotter.adicionar(carrinhoDeCompras);
-  }
-
-  public LivroDigital (String nome, String autor, double preco, int isbn, boolean redimensionavel) {
-    super(nome, autor, preco, isbn);
-    this.redimensionavel = redimensionavel;
-  }
-
-  // livroDigital
-
-  public boolean adicionar(CarrinhoDeCompras carrinhoDeCompras) {
-    var livroDigital = new LivroDigital(this.nome, this.autor, this.preco * 0.8, this.isbn, this.redimensionavel);
-    carrinhoDeCompras.adicionaLivro(livroDigital);
-  }
-
-}
-
-```
-
-O polimorfismo permite que classes abstratas consigam receber comportamentos através de classes concretas.
-
-<!--
-
-    Autor autor = new Autor();
-    autor.setNome("Nathan C.");
-
-    LivroFisico fisico = new LivroFisico(autor);
-    fisico.setNome("Java Programming");
-    fisico.setValor(180);
-
-    Ebook ebook = new Ebook(autor);
-    ebook.setNome("C# Programming");
-    ebook.setValor(120);
-
-    CarrinhoCompras carrinho = new CarrinhoCompras();
-    carrinho.adicionalLivro(fisico);
-    carrinho.adicionalLivro(ebook);
-
-    System.out.println("Total: " + carrinho.getTotal());
-
- -->
+O polimorfismo nos permite programar para abstrações, onde o programa não se importa com o tipo de felino passado para o método `apresentarFelino`, uma vez que todas suas subclasses devem implementar o método falar.
