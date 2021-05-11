@@ -1,4 +1,3 @@
-
 iFood 🍇
 
 <!--
@@ -52,16 +51,14 @@ A POO possui quatro conceitos essenciais para facilitar a compreensão de uma ba
 - Herança
 - Polimorfismo
 
-
 Além disso, existem muitos prós ao programar usando a LPOO:
-  - Torna os programas mais gerenciáveis (manutenções e modificações, por exemplo)
-  - Escalabilidade do programa
-  - Por trabalhar com objetos, permite que você represente melhor o mundo real
-  - Os programas em POO são mais fáceis de ler e entender
-  - Facilita a reutilização de objetos, aumentando a velocidade de programação
-  - Mais fácil depurar, porque os objetos são autônomos
 
-
+- Torna os programas mais gerenciáveis (manutenções e modificações, por exemplo)
+- Escalabilidade do programa
+- Por trabalhar com objetos, permite que você represente melhor o mundo real
+- Os programas em POO são mais fáceis de ler e entender
+- Facilita a reutilização de objetos, aumentando a velocidade de programação
+- Mais fácil depurar, porque os objetos são autônomos
 
 ## Classe
 
@@ -74,7 +71,7 @@ Possuem visibilidade, exemplo: public, private, protected;
 Para criar uma classe basta declarar a visibilidade + digitar a palavra reservada class + NomeDaClasse + abrir e fechar chaves { }.
 
 ```java
-public class Teste{
+public class Teste {
   //ATRIBUTOS OU PROPRIEDADES
   //MÉTODOS
 }
@@ -109,21 +106,21 @@ Na imagem abaixo, criamos alguns objetos do tipo `Cachorro` e designamos a eles 
 
 ```java
 public class TestaCaes {
-	public static void main(String[] args) {
-		Cachorro cachorro1 = new Cachorro("Bob", 12);
+  public static void main(String[] args) {
+    Cachorro cachorro1 = new Cachorro("Bob", 12);
 
-		Cachorro cachorro2 = new Cachorro();
-		cachorro2.nome = "Rex";
-		cachorro2.corOlhos = "amarelo";
-		cachorro2.peso = 22;
-		cachorro2.quantPatas = 3;
+    Cachorro cachorro2 = new Cachorro();
+    cachorro2.nome = "Rex";
+    cachorro2.corOlhos = "amarelo";
+    cachorro2.peso = 22;
+    cachorro2.quantPatas = 3;
 
-		Cachorro cachorro3 = new Cachorro();
-		cachorro3.nome = "Bob";
-		cachorro3.corOlhos = "marrom";
-		cachorro3.peso = 13;
-		cachorro3.quantPatas = 4;
-	}
+    Cachorro cachorro3 = new Cachorro();
+    cachorro3.nome = "Bob";
+    cachorro3.corOlhos = "marrom";
+    cachorro3.peso = 13;
+    cachorro3.quantPatas = 4;
+  }
 }
 ```
 
@@ -253,44 +250,78 @@ public class App {
   }
 }
 
+// TODO
+// 1 - Livro
 
+// 2 - Carrinho de compras
 
+Livro.adicionar(carrinhoDeCompras);
 
-public class Pessoa {
-  String nome;
-  int idade;
+public class CarrinhoDeCompras {
+  private ArrayList<Livro> livros;
 
-  // Instanciação de objeto
-  // Pessoa pessoa = new Pessoa("Nina", 23);
+  public CarrinhoDeCompras() {
+  }
 
+  public void adicionarLivro(Livro livro) {
+    this.livros.add(livro);
+  }
+}
 
-  //Criando um construtor
-  public Pessoa(String nome, int idade){
+public abstract class Livro {
+  private String nome;
+  private String autor;
+  private boolean preco;
+  private boolean isbn;
+
+  public Livro(String nome, String autor, double preco, int isbn) {
+    this.isbn = isbn;
     this.nome = nome;
-    this.idade = idade;
+    this.autor = autor;
+    this.preco = preco;
   }
 
+  public boolean adicionar(CarrinhoDeCompras carrinhoDeCompras);
+}
 
-  public String dizer_ola() {
-    // "nome" diz: Olá!
-    // System.
-    String resposta = String.format(nome + " diz: Olá!");
-    return resposta;
+public class LivroFisico extends Livro {
+  private String materialDaCapa;
+
+  public LivroFisico (String nome, String autor, double preco, int isbn, String materialDaCapa) {
+    super(nome, autor, preco, isbn);
+    this.materialDaCapa = materialDaCapa;
   }
 
- public int Somar(int n1, int n2) {
-    int soma = n1 + n2;
-    return soma;
+  public boolean adicionar(CarrinhoDeCompras carrinhoDeCompras) {
+    carrinhoDeCompras.adicionarLivro(this);
+  }
+}
 
-    int, float, boolean, char
- }
+// Livro digital com desconto de 20%
 
- public float Dividir(int n1, int n2) {
-   float divisao = n1 / n2;
-   return divisao;
- }
+public class LivroDigital extends Livro {
+  private boolean redimensionavel;
+
+  public void main(String[] args) {
+    var HarryPotter = new LivroDigital(...);
+
+    HarryPotter.adicionar(carrinhoDeCompras);
+  }
+
+  public LivroDigital (String nome, String autor, double preco, int isbn, boolean redimensionavel) {
+    super(nome, autor, preco, isbn);
+    this.redimensionavel = redimensionavel;
+  }
+
+  // livroDigital
+
+  public boolean adicionar(CarrinhoDeCompras carrinhoDeCompras) {
+    var livroDigital = new LivroDigital(this.nome, this.autor, this.preco * 0.8, this.isbn, this.redimensionavel);
+    carrinhoDeCompras.adicionaLivro(livroDigital);
+  }
 
 }
+
 ```
 
 O polimorfismo permite que classes abstratas consigam receber comportamentos através de classes concretas.
@@ -315,14 +346,3 @@ O polimorfismo permite que classes abstratas consigam receber comportamentos atr
     System.out.println("Total: " + carrinho.getTotal());
 
  -->
-
-# Ifood
-
-`Vendedor`
-`Consumidor`
-`CarrinhoDeCompras`
-
-`Produto`
-
-`ProdutoAlimenticio`
-`ProdutoUtilitário `
