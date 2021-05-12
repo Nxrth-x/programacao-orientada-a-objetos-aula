@@ -1,37 +1,5 @@
 iFood 🍇
 
-<!--
-HELPERS
-
-Pular linha
-<br />
-
-Linha horizontal
-
-<hr />
-
-Link
-[Google](https://google.com)
-
-Imagem
-![image](https://arquivo.devmedia.com.br/artigos/Thiago_Varallo/Introducao_POO_Java/Introducao_POO_Java2.jpg)
--->
-
-## Tópicos
-
-- [x] Introdução a programação orientada a objetos - **Eder**
-- Classe - **Nina**
-
-  - [x] Objetos - **Nina**
-  - [x] Atributos - **Nina**
-  - [x] Métodos - **Nina**
-
-- Orientação a objetos
-  - [x] Abstração - **Eder**
-  - [x] Encapsulamento - **Eder**
-  - [ ] Herança
-  - [x] Polimorfismo **Nina**
-
 ## Introdução a programação orientada a objetos
 
 A programação orientada a objetos, também conhecida como POO, é um dos principais paradigmas de programação, usado e testado extensivamente em casos reais onde um dos requisitos do projeto é escalabilidade para equipes. A orientação a objetos nos traz um nível de abstração e agilidade essencial para o desenvolvimento de grandes projetos.
@@ -345,3 +313,7 @@ public class Leao extends Felino {
 ```
 
 O polimorfismo nos permite programar para abstrações, onde o programa não se importa com o tipo de felino passado para o método `apresentarFelino`, uma vez que todas suas subclasses devem implementar o método falar.
+
+# Implementação do projeto
+
+- [Repositório](https://github.com/Nxrth-x/ifood-clone)
